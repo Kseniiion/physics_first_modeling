@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Оптимизация катушки</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>Оптимизация катушки</h1>
+    <p class="subtitle">Физическая модель: подбор длины намотки, при которой магнитная индукция на оси в центре катушки максимальна.</p>
+
+    <section class="grid">
+      <div class="card controls" id="controls"></div>
+      <div class="card result">
+        <h2>Оптимум</h2>
+        <div class="big" id="bestLength"></div>
+        <p id="bestB"></p>
+        <p id="bestN"></p>
+        <p id="bestL"></p>
+      </div>
+    </section>
+
+    <section class="card chart">
+      <h2>График B = f(l)</h2>
+      <svg id="plot" viewBox="0 0 900 420" role="img" aria-label="График зависимости магнитной индукции от длины катушки"></svg>
+    </section>
+
+    <section class="card formula">
+      <h2>Физическая модель</h2>
+      <p>Катушка представляется набором круглых витков. Поле одного витка в точке центра на расстоянии x от его плоскости:</p>
+      <code>Bᵢ = μ₀ I rᵢ² / (2(rᵢ² + xᵢ²)^(3/2))</code>
+      <p>Итоговое поле находится суммированием по всем виткам. Индуктивность оценивается формулой длинного соленоида:</p>
+      <code>𝓛 ≈ μ₀ N² S / l</code>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

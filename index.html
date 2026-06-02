@@ -8,31 +8,36 @@
 </head>
 <body>
   <main>
-    <h1>Оптимизация катушки</h1>
-    <p class="subtitle">Физическая модель: подбор длины намотки, при которой магнитная индукция на оси в центре катушки максимальна.</p>
+    <header>
+      <h1>Оптимизация катушки</h1>
+      <p class="subtitle">Расчёт длины намотки, при которой магнитная индукция на оси в центре катушки максимальна.</p>
+    </header>
 
-    <section class="grid">
-      <div class="card controls" id="controls"></div>
-      <div class="card result">
+    <section class="layout">
+      <div class="panel controls" id="controls"></div>
+      <div class="panel result">
         <h2>Оптимум</h2>
         <div class="big" id="bestLength"></div>
         <p id="bestB"></p>
         <p id="bestN"></p>
+        <p id="bestGeometry"></p>
         <p id="bestL"></p>
+        <p id="inductanceError"></p>
       </div>
     </section>
 
-    <section class="card chart">
+    <section class="panel chart">
       <h2>График B = f(l)</h2>
       <svg id="plot" viewBox="0 0 900 420" role="img" aria-label="График зависимости магнитной индукции от длины катушки"></svg>
     </section>
 
-    <section class="card formula">
+    <section class="panel formula">
       <h2>Физическая модель</h2>
-      <p>Катушка представляется набором круглых витков. Поле одного витка в точке центра на расстоянии x от его плоскости:</p>
-      <code>Bᵢ = μ₀ I rᵢ² / (2(rᵢ² + xᵢ²)^(3/2))</code>
-      <p>Итоговое поле находится суммированием по всем виткам. Индуктивность оценивается формулой длинного соленоида:</p>
-      <code>𝓛 ≈ μ₀ N² S / l</code>
+      <p>Внешний диаметр провода с изоляцией: a = d + 2δ. Радиус центра витков j-го слоя:</p>
+      <code>r_j = D/2 + a/2 + j a</code>
+      <p>Поле каждого витка в центре катушки:</p>
+      <code>B_i = μ₀ I r_i² / (2(r_i² + x_i²)^(3/2))</code>
+      <p>Индуктивность выводится двумя оценками: формулой длинного соленоида и формулой Уиллера для короткой воздушной катушки.</p>
     </section>
   </main>
   <script src="app.js"></script>
